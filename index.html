@@ -1,6 +1,229 @@
-<script>
-  function gotData(data) {
-    console.log(data);
-  }
-</script>
-<script src="https://dexprotector-b0102.firebaseio.com/.json?callback=gotData"></script>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content='IE=9; IE=8; IE=7; IE=EDGE; chrome=1' http-equiv='X-UA-Compatible'/>
+<meta content='#0275d8' name='theme-color'/>
+<meta content='#0275d8' name='msapplication-navbutton-color'/>
+<meta content='yes' name='apple-mobile-web-app-capable'/>
+<meta content='#0275d8' name='apple-mobile-web-app-status-bar-style'/>
+
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+  
+      <!-- Bootstrap core CSS -->
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="css/styles.css" rel="stylesheet">
+  <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+    />
+    <!-- Google Fonts Roboto -->
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+    />
+</head>
+<body>
+ <nav class="navbar navbar-expand-lg bg-light">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+              <strong>DPStudio</strong>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Action</a></li>
+                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled">Disabled</a>
+                </li>
+              </ul>
+              <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-dark" type="submit">Search</button>
+              </form>
+            </div>
+          </div>
+        </nav>
+<!--Start of homepage-->
+ <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 fw-normal">DP Studio.</h1>
+      <p class="lead fw-normal">Multi-layered Encryption solution that secures your Android apps
+against static and dynamic analysis, illegal use and tampering</p>
+      <a class="btn btn-outline-secondary" href="#submitentry">Download</a>
+    </div>
+    <div class="product-device shadow-sm d-none d-md-block"></div>
+    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+  </div
+</div>
+<br/>
+<div class=' text-center'>
+<!--Main Panel for Converting Links Start-->
+  <div class="card">
+              <div class="card-header">
+                DP Studio
+              </div>
+              <div class="card-body">
+             <!--Start of Form-->
+<div class='form-group'>
+<div class='text-center' id='statusView'></div>
+<div class='input-group'>
+
+<input class='form-control' id='uidInput' pattern='(http://|https://).*' placeholder='Enter UID' required='' type='url'/>
+
+</div>
+<br/>
+<select class='form-control' id="item-options"> 
+<option value="VIP one month" price="2">VIP one month - 2 USD</option> 
+</select>
+       
+<br/>
+<div id="paypal-button-container"></div>
+</div>
+<!--End of Form-->
+<br/>
+
+              </div>
+              
+            </div>
+			</div><!--End Of Main Panel-->
+</div>
+<br/>
+  <!-- Replace "test" with your own sandbox Business account app client ID -->
+  <script src="https://www.paypal.com/sdk/js?client-id=Ac-Jad5a-1Ed6Suqgqgmiuz5IpJZnkmUJayDe1-3I4kyJ-a52WQZZKjuNHnWbJ7tjxiW1jLE7lMU3hAV&currency=USD"></script>
+  <!-- Set up a container element for the button -->
+  
+  <script>
+  var username = document.querySelector("#uidInput");
+    var statusView = document.querySelector("#statusView");
+    var itemOptions = document.querySelector("#item-options");
+	
+	var actionStatus;
+
+        function updateActionStatus() {
+            var sUsername = username.value;
+            
+            if (sUsername.length === 0) {
+                actionStatus.disable();
+                return false;
+            } else {
+                actionStatus.enable();
+                return true;
+            }
+        }
+        username.addEventListener('change', (event) => {updateActionStatus();});
+     
+  function checkForm() {
+            var sUsername = username.value;
+            var sConfirm = confirm.value;
+            if (sUsername.length === 0) {
+                statusView.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+          Please enter your uid!
+      </div>`;
+                username.focus();
+                return false;
+            }  else {
+			statusView.innerHTML =``;
+              //  username.classList.remove("layui-form-danger");
+              //  confirm.classList.remove("layui-form-danger");
+                return true;
+            }
+       }
+    paypal.Buttons({
+		
+      // Sets up the transaction when a payment button is clicked
+    onInit: function (data, actions) {
+                    actionStatus = actions;
+                    updateActionStatus();
+                   // layer.close(loadIndex);
+                },
+	  createOrder: (data, actions) => {
+		  if (!updateActionStatus()) {
+                        return null;
+                    }
+		  var selectedItemDescription = itemOptions.options[itemOptions.selectedIndex].value;
+           var selectedItemPrice = itemOptions.options[itemOptions.selectedIndex].getAttribute("price")
+                  
+        return actions.order.create({
+          purchase_units: [{
+			description: username.value + " - DP " + selectedItemDescription,
+            amount: {
+			  currency_code: 'USD',
+              value: selectedItemPrice// Can also reference a variable or function
+            },
+			custom_id: username.value
+          }]
+        });
+      },
+	  onClick: function () {
+             checkForm();
+       },
+	   
+      // Finalize the transaction after payer approval
+      onApprove: (data, actions) => {
+        return actions.order.capture().then(function(orderData) {
+			statusView.innerHTML = `<div class="alert alert-success alert-dismissible fade show" role="alert">Thank you for your payment! VIP will be activated automatically within a few minutes, please refresh and check in DP Studio later.
+      </div>`;
+          // Successful capture! For dev/demo purposes:
+          //console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+         // const transaction = orderData.purchase_units[0].payments.captures[0];
+          //alert(`Transaction ${transaction.status}: ${transaction.id}\n\nSee console for all available details`);
+          // When ready to go live, remove the alert and show a success message within this page. For example:
+          // const element = document.getElementById('paypal-button-container');
+          // element.innerHTML = '<h3>Thank you for your payment!</h3>';
+          // Or go to another URL:  actions.redirect('thank_you.html');
+        });
+      },
+	  onError: function (err) {
+                    statusView.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+          ${err}
+      </div>`;
+                }
+    }).render('#paypal-button-container');
+  </script>
+  <footer class="bg-light text-center text-lg-start">
+  <!-- Copyright -->
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2023 made with ❤️ by
+    <a class="text-dark" href="#">TK Studio</a>
+  </div>
+  <!-- Copyright -->
+</footer>
+
+  <!-- Add additional services that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-functions.js"></script>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+</body>
+</html>
